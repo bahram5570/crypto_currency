@@ -5,6 +5,7 @@ import Spinner from "../spinner/Spinner";
 import { detailsStatistics } from "./detailsStatistics";
 import { detailsLinks } from "./detailsLinks";
 import { FaTimesCircle } from "react-icons/fa";
+import Chart from "./Chart";
 
 const Details = (props) => {
   const { data, loading, isError } = props.detailsData;
@@ -32,6 +33,7 @@ const Details = (props) => {
             </div>
           </div>
           <div className="Details_description">
+            <Chart data={data.sparkline} />
             <p>Descriptions</p>
             <div className="Details_columns">
               <div>{htmlParse(data.description)}</div>
