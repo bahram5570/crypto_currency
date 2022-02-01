@@ -1,0 +1,163 @@
+.Layout {
+  position: relative;
+  min-height: 100vh;
+  max-width: 1800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Layout header {
+  background: #606060;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 20px;
+}
+
+.Layout header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Layout_refresh {
+  display: flex;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  margin-left: 30px;
+  padding: 3px 15px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.Layout_refresh:hover {
+  transform: scale(1.05);
+}
+
+.Layout_refresh p {
+  margin-right: 10px;
+}
+
+.Layout header img {
+  height: 40px;
+  width: auto;
+}
+
+.Layout_menu {
+  display: none;
+}
+
+.Layout_sidebar {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.Layout_sidebar li {
+  margin: 0 15px;
+  transition: 0.1s;
+}
+
+.Layout_sidebar li:hover {
+  transform: scale(1.1);
+}
+
+.Layout_sidebar a {
+  color: #ffffff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.Layout_sidebar a.selected {
+  border-bottom: 2px solid #ffffff;
+}
+
+.Layout footer {
+  background: #606060;
+  color: #ffffff;
+  padding: 10px;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  justify-content: center;
+  z-index: 2;
+}
+
+.Layout footer ul {
+  position: relative;
+  display: flex;
+  font-size: 0.8rem;
+  align-items: center;
+  list-style: none;
+}
+
+.Layout footer li {
+  margin: 0 10px;
+  transition: 0.1s;
+}
+
+.Layout footer li:hover {
+  transform: scale(1.05);
+}
+
+.Layout footer a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+  .Layout header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .Layout_pages {
+    margin-right: 30px;
+  }
+
+  .Layout_sidebar {
+    flex-direction: column;
+    background: #444444;
+    position: absolute;
+    top: 46px;
+    right: -100px;
+    height: 100vh;
+    padding: 10px 20px;
+    transition: 0.2s;
+  }
+
+  .Layout_sidebar.open {
+    right: 0;
+  }
+
+  .Layout_sidebar li {
+    margin: 10px 0;
+  }
+
+  .Layout_pages svg {
+    color: #ffffff;
+    width: 25px;
+    height: 25px;
+  }
+
+  .Layout_menu {
+    display: block;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .Layout_menu.open {
+    transform: rotate(90deg);
+  }
+
+  .Layout footer ul {
+    font-size: 0.6rem;
+  }
+}

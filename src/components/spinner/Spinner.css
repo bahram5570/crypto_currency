@@ -1,0 +1,28 @@
+.Spinner {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+.Spinner svg {
+  display: block;
+  width: 100px;
+  height: 100px;
+  color: #00ffff;
+  animation: spinnerAnimation 1.5s infinite linear;
+}
+
+@keyframes spinnerAnimation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

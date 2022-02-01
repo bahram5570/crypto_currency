@@ -1,0 +1,151 @@
+.Coins {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.Coins_message {
+  color: #ffffff;
+}
+
+.Coins h2 {
+  color: #e0e0e0;
+}
+
+.Coins_global {
+  margin: 20px 0 40px 0;
+  padding: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-row-gap: 30px;
+  background: #ffffff;
+  font-size: 0.8rem;
+}
+
+.Coins_global section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Coins_global section h4 {
+  color: #222255;
+  margin-bottom: 5px;
+}
+
+.Coins_global section svg {
+  margin-right: 10px;
+}
+
+.Coins_showMore {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Coins_showMore button {
+  outline: none;
+  border: none;
+  background: none;
+  color: #00ffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.Coins_showMore input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 1.2rem;
+}
+
+.Coins_items {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.Coins_items section {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.Coins_items section div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Coins_items img {
+  width: auto;
+  height: 50px;
+}
+
+.Coins_items h4 {
+  margin-bottom: 20px;
+}
+
+.Coins_items p {
+  margin: 8px 0;
+}
+
+.Coins_details {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Coins_details a {
+  text-decoration: none;
+  color: #0033dd;
+}
+
+.Coins_change {
+  color: #00ff00;
+}
+
+.Coins_change.negative {
+  color: #ff0000;
+}
+
+@media screen and (max-width: 700px) {
+  .Coins {
+    padding: 60px 20px;
+  }
+
+  .Coins h2 {
+    font-size: 1rem;
+  }
+
+  .Coins_global {
+    margin: 10px 0 40px 0;
+    grid-template-columns: 50% 50%;
+  }
+
+  .Coins_items {
+    margin: 10px 0;
+    justify-content: space-between;
+    grid-template-columns: 48% 48%;
+    font-size: 0.8rem;
+  }
+
+  .Coins_items img {
+    height: 30px;
+  }
+
+  .Coins_showMore button {
+    font-size: 0.8rem;
+    margin-left: 30px;
+  }
+
+  .Coins_showMore input {
+    font-size: 0.8rem;
+  }
+}
