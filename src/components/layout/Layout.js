@@ -1,11 +1,11 @@
 import "./Layout.css";
-import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { coinsAsync } from "../redux/coinsSlice";
 import { newsAsync } from "../redux/newsSlice";
 import navBarIcon from "./icon.png";
-import { FaBars, FaSyncAlt } from "react-icons/fa";
+import { FaBars, FaSyncAlt, FaRegSun, FaRegMoon } from "react-icons/fa";
 
 const Layout = (props) => {
   const [sideBar, setSideBar] = useState(false);
@@ -22,8 +22,29 @@ const Layout = (props) => {
     }
   };
 
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const params = searchParams.get("darkMode");
+
+  useEffect( () => {
+    if (params === null) {
+      navigate('?darkMode=true')
+    }
+  }, [params, navigate]);
+
+  const darkModeHandler = () => {
+    if (params === "true") {
+      navigate("?darkMode=false")
+    } else {
+      navigate("?darkMode=true")
+    }
+  };
+
+  const darkMode = params === "true" ? true : false;
+
+  
   return (
-    <main className="Layout">
+    <main className={`Layout ${darkMode ? "" : "light"}`}>
       <header className={sideBar ? "open" : ""}>
         <nav>
           <img src={navBarIcon} alt="Main Icon" />
@@ -31,6 +52,12 @@ const Layout = (props) => {
             <p>Refresh</p>
             <FaSyncAlt />
           </span>
+
+          <span className={`Layout_darkMode ${darkMode ? "" : "light"}`} onClick={darkModeHandler}>
+            <FaRegSun className="Layout_sun" />
+            <FaRegMoon className="Layout_moon" />
+          </span>
+
         </nav>
         <nav className="Layout_pages">
           <FaBars
@@ -40,7 +67,7 @@ const Layout = (props) => {
           <ul className={`Layout_sidebar ${sideBar ? "open" : ""}`}>
             <li>
               <NavLink
-                to="/Coins"
+                to={`/Coins?darkMode=${darkMode}`}
                 className={(x) => (x.isActive ? "selected" : "")}
               >
                 Coins
@@ -48,7 +75,7 @@ const Layout = (props) => {
             </li>
             <li>
               <NavLink
-                to="/News"
+                to={`/News?darkMode=${darkMode}`}
                 className={(x) => (x.isActive ? "selected" : "")}
               >
                 News

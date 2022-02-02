@@ -18,6 +18,10 @@
   animation: spinnerAnimation 1.5s infinite linear;
 }
 
+.Spinner.light svg {
+  color: #00ff00;
+}
+
 @keyframes spinnerAnimation {
   from {
     transform: rotate(0);

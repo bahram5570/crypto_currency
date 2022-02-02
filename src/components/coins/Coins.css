@@ -13,6 +13,10 @@
   color: #e0e0e0;
 }
 
+.Coins.light h2 {
+  color: #000000;
+}
+
 .Coins_global {
   margin: 20px 0 40px 0;
   padding: 10px;
@@ -20,8 +24,13 @@
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-row-gap: 30px;
-  background: #ffffff;
+  background: #eeeeee;
   font-size: 0.8rem;
+}
+
+.Coins_global.light {
+  background: #ffffff;
+  box-shadow: 0 0 10px #555555;
 }
 
 .Coins_global section {
@@ -74,7 +83,12 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  background: #eeeeee;
+}
+
+.Coins_items.light section {
   background: #ffffff;
+  box-shadow: 0 0 10px #555555;
 }
 
 .Coins_items section div {

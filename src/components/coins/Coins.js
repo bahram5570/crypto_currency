@@ -66,6 +66,8 @@ const Coins = () => {
     }
   }, [dispatch, searchParams, filteredData]);
 
+  const darkMode = searchParams.get("darkMode") === "true" ? true : false;
+
   if (!loading && isError) {
     return (
       <div className="Coins">
@@ -75,7 +77,7 @@ const Coins = () => {
   }
 
   return (
-    <div className="Coins">
+    <div className={`Coins ${darkMode ? "" : "light"}`}>
       {showDetails && (
         <Details
           detailsData={detailsData}
@@ -87,7 +89,7 @@ const Coins = () => {
       {!loading && !isError && filteredData && (
         <>
           <h2>Global Crypto Stats</h2>
-          <div className="Coins_global">
+          <div className={`Coins_global ${darkMode ? "" : "light"}`}>
             <section>
               <h4>
                 <FaCoins />
@@ -132,7 +134,7 @@ const Coins = () => {
               />
             )}
           </div>
-          <div className="Coins_items">
+          <div className={`Coins_items ${darkMode ? "" : "light"}`}>
             {showMore && filteredData.length === 0 && (
               <p className="Coins_message">No match found!</p>
             )}
@@ -158,7 +160,9 @@ const Coins = () => {
                     </span>{" "}
                   </p>
                   <span className="Coins_details">
-                    <Link to={`?coinID=${x.uuid}`}>Details</Link>
+                    <Link to={`?coinID=${x.uuid}&darkMode=${darkMode}`}>
+                      Details
+                    </Link>
                   </span>
                 </section>
               ))}

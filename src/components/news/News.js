@@ -1,6 +1,7 @@
 import "./News.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { newsAsync } from "../redux/newsSlice";
 import Spinner from "../spinner/Spinner";
 import { FaImage } from "react-icons/fa";
@@ -16,6 +17,9 @@ const News = () => {
     dispatch(newsAsync());
   }, [dispatch]);
 
+  const [searchParams] = useSearchParams();
+  const darkMode = searchParams.get("darkMode") === "true" ? true : false;
+
   if (!loading && isError) {
     return (
       <div className="News">
@@ -27,9 +31,13 @@ const News = () => {
   return (
     <div className="News">
       {loading && <Spinner />}
-      {!loading && !isError && <h2>Latest News</h2>}
+      {!loading && !isError && (
+        <h2 className={`News_header ${darkMode ? "" : "light"}`}>
+          Latest News
+        </h2>
+      )}
 
-      <div className="News_items">
+      <div className={`News_items ${darkMode ? "" : "light"}`}>
         {!loading &&
           !isError &&
           newsData.data.length > 0 &&

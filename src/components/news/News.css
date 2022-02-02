@@ -1,5 +1,5 @@
 .News {
-  padding: 60px 20px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -9,8 +9,12 @@
   color: #ffffff;
 }
 
-.News h2 {
+.News_header {
   color: #e0e0e0;
+}
+
+.News_header.light {
+  color: #000000;
 }
 
 .News_items {
@@ -27,7 +31,12 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  background: #eeeeee;
+}
+
+.News_items.light section {
   background: #ffffff;
+  box-shadow: 0 0 10px #555555;
 }
 
 .News_header {
@@ -85,8 +94,11 @@
   margin-left: 10px;
 }
 
-
 @media screen and (max-width: 700px) {
+  .News {
+    padding: 60px 20px;
+  }
+
   .News h2 {
     font-size: 1rem;
   }
@@ -103,7 +115,8 @@
     font-size: 1rem;
   }
 
-  .News_source a, .News_source p {
+  .News_source a,
+  .News_source p {
     font-size: 0.6rem;
   }
 }

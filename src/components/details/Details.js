@@ -1,5 +1,5 @@
 import "./Details.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import htmlParse from "html-react-parser";
 import Spinner from "../spinner/Spinner";
 import { detailsStatistics } from "./detailsStatistics";
@@ -17,22 +17,25 @@ const Details = (props) => {
     props.onClose();
   };
 
+  const [searchParams] = useSearchParams();
+  const darkMode = searchParams.get("darkMode") === "true" ? true : false;
+
   return (
     <div className="Details">
       {!isError && loading && <Spinner />}
       {!loading && !isError && (
-        <div className="Details_body">
+        <div className={`Details_body ${darkMode ? "" : "light"}`}>
           <FaTimesCircle className="Details_close" onClick={closeHandler} />
-          <div className="Details_header">
+          <div className={`Details_header ${darkMode ? "" : "light"}`}>
             <p>{`${data.name} Statistics & Descriptions`}</p>
           </div>
-          <div className="Details_stastics">
+          <div className={`Details_stastics ${darkMode ? "" : "light"}`}>
             <div>{detailsStatistics(data)}</div>
             <div>
               <img src={props.coinIcon} alt={props.coinIcon} />
             </div>
           </div>
-          <div className="Details_description">
+          <div className={`Details_description ${darkMode ? "" : "light"}`}>
             <Chart data={data.sparkline} />
             <p>Descriptions</p>
             <div className="Details_columns">
