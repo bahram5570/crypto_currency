@@ -63,7 +63,7 @@ const News = () => {
                   <a href={x.url} target={"_blank"} rel="noopener noreferrer">
                     {x.provider[0].name}
                   </a>
-                  {x.provider ? (
+                  {x.provider[0].image ? (
                     <img
                       src={x.provider[0].image.thumbnail.contentUrl}
                       alt={x.name}
