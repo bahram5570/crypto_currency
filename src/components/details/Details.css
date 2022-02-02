@@ -25,6 +25,14 @@
   background: #ffffff;
 }
 
+.Details_message {
+  color: #ffffff;
+}
+
+.Details_message.light {
+  color: #000000;
+}
+
 .Details_close {
   position: absolute;
   top: 10px;

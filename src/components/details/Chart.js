@@ -20,7 +20,7 @@ const Chart = (sparkline) => {
         backgroundColor: "#ffdd00",
         borderColor: "#ffff00",
         fill: false,
-        borderWidth: 2,
+        borderWidth: 1,
       },
     ],
   };

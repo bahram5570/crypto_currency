@@ -23,6 +23,15 @@ const Details = (props) => {
   return (
     <div className="Details">
       {!isError && loading && <Spinner />}
+      {!loading && isError && (
+        <div className={`Details_body ${darkMode ? "" : "light"}`}>
+          <FaTimesCircle className="Details_close" onClick={closeHandler} />
+          <p className={`Details_message ${darkMode ? "" : "light"}`}>
+            Could't fetch the data. Try again!
+          </p>
+        </div>
+      )}
+
       {!loading && !isError && (
         <div className={`Details_body ${darkMode ? "" : "light"}`}>
           <FaTimesCircle className="Details_close" onClick={closeHandler} />

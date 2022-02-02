@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { newsAsync } from "../redux/newsSlice";
 import Spinner from "../spinner/Spinner";
+import Arrow from "../arrow/Arrow";
 import { FaImage } from "react-icons/fa";
 
 const News = () => {
@@ -23,13 +24,16 @@ const News = () => {
   if (!loading && isError) {
     return (
       <div className="News">
-        <p className="News_message">Could't fetch the data. Try again!</p>
+        <p className={`News_message ${darkMode ? "" : "light"}`}>
+          Could't fetch the data. Try again!
+        </p>
       </div>
     );
   }
 
   return (
     <div className="News">
+      <Arrow />
       {loading && <Spinner />}
       {!loading && !isError && (
         <h2 className={`News_header ${darkMode ? "" : "light"}`}>

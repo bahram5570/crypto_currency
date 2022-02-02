@@ -9,6 +9,10 @@
   color: #ffffff;
 }
 
+.Coins_message.light {
+  color: #000000;
+}
+
 .Coins h2 {
   color: #e0e0e0;
 }

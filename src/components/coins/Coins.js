@@ -12,6 +12,7 @@ import { coinsAsync } from "../redux/coinsSlice";
 import { detailsAsync } from "../redux/datailsSlice";
 import Details from "../details/Details";
 import Spinner from "../spinner/Spinner";
+import Arrow from "../arrow/Arrow";
 
 let coinIcon = "";
 
@@ -71,7 +72,9 @@ const Coins = () => {
   if (!loading && isError) {
     return (
       <div className="Coins">
-        <p className="Coins_message">Could't fetch the data. Try again!</p>
+        <p className={`Coins_message ${darkMode ? "" : "light"}`}>
+          Could't fetch the data. Try again!
+        </p>
       </div>
     );
   }
@@ -85,6 +88,7 @@ const Coins = () => {
           onClose={closeDetailsHandler}
         />
       )}
+      <Arrow />
       {loading && <Spinner />}
       {!loading && !isError && filteredData && (
         <>

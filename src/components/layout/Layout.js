@@ -118,15 +118,6 @@ const Layout = (props) => {
                 RapidAPI
               </a>
             </li>
-            <li>
-              <a
-                href="https://fontawesome.com"
-                target={"_blank"}
-                rel="noopener noreferrer"
-              >
-                Font Awesome
-              </a>
-            </li>
           </ul>
         </nav>
       </footer>

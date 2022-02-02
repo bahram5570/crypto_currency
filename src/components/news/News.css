@@ -9,6 +9,10 @@
   color: #ffffff;
 }
 
+.News_message.light {
+  color: #000000;
+}
+
 .News_header {
   color: #e0e0e0;
 }

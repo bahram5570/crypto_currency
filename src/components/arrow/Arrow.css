@@ -1,0 +1,16 @@
+.Arrow {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: #000000;
+    background: #ffffff;
+    border-radius: 50px;
+    padding: 3px;
+}
+
+.Arrow.hidden {
+    display: none;
+}
