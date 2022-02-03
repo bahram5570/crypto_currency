@@ -1,6 +1,11 @@
 import "./Layout.css";
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  NavLink,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { coinsAsync } from "../redux/coinsSlice";
 import { newsAsync } from "../redux/newsSlice";
@@ -26,23 +31,22 @@ const Layout = (props) => {
   const [searchParams] = useSearchParams();
   const params = searchParams.get("darkMode");
 
-  useEffect( () => {
+  useEffect(() => {
     if (params === null) {
-      navigate('?darkMode=true')
+      navigate("?darkMode=true");
     }
   }, [params, navigate]);
 
   const darkModeHandler = () => {
     if (params === "true") {
-      navigate("?darkMode=false")
+      navigate("?darkMode=false");
     } else {
-      navigate("?darkMode=true")
+      navigate("?darkMode=true");
     }
   };
 
   const darkMode = params === "true" ? true : false;
 
-  
   return (
     <main className={`Layout ${darkMode ? "" : "light"}`}>
       <header className={sideBar ? "open" : ""}>
@@ -53,11 +57,13 @@ const Layout = (props) => {
             <FaSyncAlt />
           </span>
 
-          <span className={`Layout_darkMode ${darkMode ? "" : "light"}`} onClick={darkModeHandler}>
+          <span
+            className={`Layout_darkMode ${darkMode ? "" : "light"}`}
+            onClick={darkModeHandler}
+          >
             <FaRegSun className="Layout_sun" />
             <FaRegMoon className="Layout_moon" />
           </span>
-
         </nav>
         <nav className="Layout_pages">
           <FaBars

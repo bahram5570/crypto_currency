@@ -57,7 +57,7 @@
 }
 
 .Layout_darkMode::before {
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   border-radius: 20px;
@@ -203,7 +203,8 @@
     transform: rotate(90deg);
   }
 
-  .Layout_refresh, .Layout_darkMode {
+  .Layout_refresh,
+  .Layout_darkMode {
     margin-left: 15px;
   }
 

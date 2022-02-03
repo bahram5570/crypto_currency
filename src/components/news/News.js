@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { newsAsync } from "../redux/newsSlice";
+import SlidingNews from "./SlidingNews";
 import Spinner from "../spinner/Spinner";
 import Arrow from "../arrow/Arrow";
 import { FaImage } from "react-icons/fa";
@@ -50,16 +51,18 @@ const News = () => {
       <Arrow />
       {loading && <Spinner />}
       {!loading && !isError && (
-        <div className={`News_header ${darkMode ? "" : "light"}`}>
-          <h2>
-            Latest News
-          </h2>
-          <input
-            type="text"
-            placeholder="Search for article"
-            onChange={searchHandler}
-          />
-        </div>
+        <>
+          <SlidingNews />
+
+          <div className={`News_header ${darkMode ? "" : "light"}`}>
+            <h2>Latest News</h2>
+            <input
+              type="text"
+              placeholder="Search for article"
+              onChange={searchHandler}
+            />
+          </div>
+        </>
       )}
 
       <div className={`News_items ${darkMode ? "" : "light"}`}>
