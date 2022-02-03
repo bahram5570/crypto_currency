@@ -38,7 +38,7 @@ const Coins = () => {
   const searchHandler = (e) => {
     const currentData = [...coinsData.data.coins];
     const updated = currentData.filter((x) =>
-      x.name.toLowerCase().includes(e.target.value.toLowerCase())
+      x.name.toLowerCase().includes(e.target.value.toLowerCase().trim())
     );
     setFilteredData(updated);
   };
@@ -126,7 +126,7 @@ const Coins = () => {
             </section>
           </div>
 
-          <div className="Coins_showMore">
+          <div className={`Coins_showMore ${darkMode ? "" : "light"}`}>
             {!showMore && <h2>Top 10 Crypto Currencies</h2>}
             {showMore && <h2>Crypto Currencies</h2>}
             {!showMore && <button onClick={showMoreHandler}>Show More</button>}

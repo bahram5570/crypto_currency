@@ -4,15 +4,19 @@ import { Line } from "react-chartjs-2";
 
 const Chart = (sparkline) => {
   const values = [];
-  const names = [];
+  const changesDate = [];
+
+  const todayDate = new Date();
 
   for (let i = 0; sparkline.data.length > i; i++) {
     values.push(parseFloat(sparkline.data[i]));
-    names.push(i);
+
+    changesDate.unshift(`${todayDate.getMonth() + 1}/${todayDate.getDate()}`);
+    todayDate.setDate(todayDate.getDate() - 1);
   }
 
   const statics = {
-    labels: names,
+    labels: changesDate,
     datasets: [
       {
         data: values,

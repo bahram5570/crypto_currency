@@ -7,7 +7,7 @@ export const newsAsync = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios(urlNews);
-      return response.data.value;
+      return response.data;
     } catch (error) {
       return rejectWithValue();
     }

@@ -1,5 +1,5 @@
 import "./News.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { newsAsync } from "../redux/newsSlice";
@@ -17,6 +17,20 @@ const News = () => {
   useEffect(() => {
     dispatch(newsAsync());
   }, [dispatch]);
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    setFilteredData(newsData.data);
+  }, [newsData.data]);
+
+  const searchHandler = (e) => {
+    const currentData = [...newsData.data];
+    const updated = currentData.filter((x) =>
+      x.description.toLowerCase().includes(e.target.value.toLowerCase().trim())
+    );
+    setFilteredData(updated);
+  };
 
   const [searchParams] = useSearchParams();
   const darkMode = searchParams.get("darkMode") === "true" ? true : false;
@@ -36,21 +50,28 @@ const News = () => {
       <Arrow />
       {loading && <Spinner />}
       {!loading && !isError && (
-        <h2 className={`News_header ${darkMode ? "" : "light"}`}>
-          Latest News
-        </h2>
+        <div className={`News_header ${darkMode ? "" : "light"}`}>
+          <h2>
+            Latest News
+          </h2>
+          <input
+            type="text"
+            placeholder="Search for article"
+            onChange={searchHandler}
+          />
+        </div>
       )}
 
       <div className={`News_items ${darkMode ? "" : "light"}`}>
         {!loading &&
           !isError &&
-          newsData.data.length > 0 &&
-          newsData.data.map((x) => (
-            <section key={x.name}>
+          filteredData.length > 0 &&
+          filteredData.map((x) => (
+            <section key={x.title}>
               <div className="News_header">
-                <p>{x.name}</p>
-                {x.image ? (
-                  <img src={x.image.thumbnail.contentUrl} alt={x.name} />
+                <p>{x.title}</p>
+                {x.tags[0].icon ? (
+                  <img src={x.tags[0].icon} alt={x.title} />
                 ) : (
                   <FaImage />
                 )}
@@ -60,20 +81,12 @@ const News = () => {
               </div>
               <div className="News_source">
                 <div>
-                  <a href={x.url} target={"_blank"} rel="noopener noreferrer">
-                    {x.provider[0].name}
+                  <a href={x.link} target={"_blank"} rel="noopener noreferrer">
+                    {x.tags[0].name}
                   </a>
-                  {x.provider[0].image ? (
-                    <img
-                      src={x.provider[0].image.thumbnail.contentUrl}
-                      alt={x.name}
-                    />
-                  ) : (
-                    <FaImage />
-                  )}
                 </div>
                 <div>
-                  <p>{new Date(x.datePublished).toDateString()}</p>
+                  <p>{x.date}</p>
                 </div>
               </div>
             </section>
